@@ -1,0 +1,15 @@
+<h1><%= @province.name %></h1>
+<div class="row">
+  <div class="col">
+    <p>Drill down through each section</p>
+  </div>
+  <div class="col">
+    <div class="list-group">
+      <%- @province.counties.each do |county| %>
+        <%= link_to province_county_path(province: @province.slug, county: county.slug), class: "list-group-item list-group-item-action" do %>
+          <span class="badge bg-primary">0</span> <%= county.name %>
+        <%- end %>
+      <%- end %>
+    </div>
+  </div>
+</div>
