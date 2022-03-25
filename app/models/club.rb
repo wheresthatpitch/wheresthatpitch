@@ -7,6 +7,6 @@ class Club < ApplicationRecord
   default_scope { order(:slug) }
 
   def slugify
-    self.slug = self.name.parameterize
+    self.slug = name.parameterize
   end
 end
