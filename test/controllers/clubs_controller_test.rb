@@ -2,9 +2,11 @@ require "test_helper"
 
 class ClubsControllerTest < ActionDispatch::IntegrationTest
   test "should get show" do
-    club = create(:club)
+    county = create(:county_with_clubs)
 
-    get club_url(province: club.county.province.slug, county: club.county.slug, club: club.slug)
+    get club_url(province: county.province.slug, county: county.slug, club: county.clubs.first.slug)
     assert_response :success
+
+    assert_select "h1", county.clubs.first.name
   end
 end
