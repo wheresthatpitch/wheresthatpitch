@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_25_092439) do
+ActiveRecord::Schema.define(version: 2022_03_25_215749) do
 
   create_table "clubs", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2022_03_25_092439) do
     t.index ["county_id"], name: "index_clubs_on_county_id"
   end
 
+  create_table "clubs_pitches", id: false, force: :cascade do |t|
+    t.integer "club_id"
+    t.integer "pitch_id"
+    t.index ["club_id"], name: "index_clubs_pitches_on_club_id"
+    t.index ["pitch_id"], name: "index_clubs_pitches_on_pitch_id"
+  end
+
   create_table "counties", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -32,6 +39,17 @@ ActiveRecord::Schema.define(version: 2022_03_25_092439) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "province_id"
     t.index ["province_id"], name: "index_counties_on_province_id"
+  end
+
+  create_table "pitches", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "county_id"
+    t.index ["county_id"], name: "index_pitches_on_county_id"
   end
 
   create_table "provinces", force: :cascade do |t|
