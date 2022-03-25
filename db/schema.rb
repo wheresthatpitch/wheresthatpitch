@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_24_155214) do
+ActiveRecord::Schema.define(version: 2022_03_25_092439) do
+
+  create_table "clubs", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "eircode"
+    t.text "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "county_id"
+    t.index ["county_id"], name: "index_clubs_on_county_id"
+  end
 
   create_table "counties", force: :cascade do |t|
     t.string "name"

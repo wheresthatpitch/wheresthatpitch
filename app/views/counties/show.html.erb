@@ -1,1 +1,19 @@
-<h1><%= @county.name %>
+<h1><%= @county.name %></h1>
+<%- if @county.clubs.empty? %>
+  <p>There are no clubs here yet</p>
+<%- else %>
+<div class="row">
+  <div class="col">
+    <p>Drill down through each section</p>
+  </div>
+  <div class="col">
+    <div class="list-group">
+      <%- @county.clubs.each do |club| %>
+        <%= link_to club_path(province: @county.province.slug, county: @county.slug, club: club.slug), class: "list-group-item list-group-item-action" do %>
+          <span class="badge bg-primary"><%= @county.clubs.count %></span> <%= @county.name %>
+        <%- end %>
+      <%- end %>
+    </div>
+  </div>
+</div>
+<%- end %>
