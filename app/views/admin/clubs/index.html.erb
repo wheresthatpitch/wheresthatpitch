@@ -1,0 +1,19 @@
+<%= link_to "Add a club", new_admin_club_path, class: "btn btn-primary" %>
+<% if @clubs.empty? %>
+  <p>There are no clubs yet</p>
+<% else %>
+  <table class="table">
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+      <td>County</td>
+    </tr>
+    <% @clubs.each do |club| %>
+      <tr>
+        <td><%= club.id %></td>
+        <td><%= link_to club.name, club_path(province: club.county.province.slug, county: club.county.slug, club:club.slug) %></td>
+        <td><%= club.county.name %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
