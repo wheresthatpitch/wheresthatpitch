@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
+    root "clubs#index"
     resources :clubs
   end
 

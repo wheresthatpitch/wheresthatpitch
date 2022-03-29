@@ -14,4 +14,8 @@ module ApplicationHelper
 
     raw doc
   end
+
+  def icon(filename)
+    inline_svg(File.join("icons", filename))
+  end
 end

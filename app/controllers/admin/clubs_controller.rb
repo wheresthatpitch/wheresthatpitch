@@ -1,5 +1,5 @@
 class Admin::ClubsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @clubs = Club.all.page((params[:page] || 1).to_i).per(20)
