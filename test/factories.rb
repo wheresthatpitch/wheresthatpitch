@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :user do
+    
+  end
+
   factory :province do
     name { "Connaught" }
     slug { "connaught" }
@@ -20,9 +24,26 @@ FactoryBot.define do
         county.reload
       end
     end
+
+    factory :county_with_pitches do
+      transient do
+        pitches_count { 5 }
+      end
+
+      after(:create) do |county, evaluator|
+        create_list(:pitch, evaluator.pitches_count, county: county)
+
+        county.reload
+      end
+    end
   end
 
   factory :club do
+    name { Faker::Team.name }
+    county
+  end
+
+  factory :pitch do
     name { Faker::Team.name }
     county
   end

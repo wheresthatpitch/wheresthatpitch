@@ -2,12 +2,12 @@ require "test_helper"
 
 class CountiesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    create(:county)
+    county = create(:county)
 
-    get county_url(province: "connaught", county: "leitrim")
+    get county_url(province: county.province.slug, county: county.slug)
     assert_response :success
 
-    assert_select "h1", "Leitrim"
+    assert_select "h1", county.name
     assert_select "p", "There are no clubs here yet"
   end
 
@@ -17,7 +17,7 @@ class CountiesControllerTest < ActionDispatch::IntegrationTest
     get county_url(province: county.province.slug, county: county.slug)
     assert_response :success
 
-    assert_select "h1", "Leitrim"
-    assert_select "span", 5
+    assert_select "h1", county.name
+    assert_select "span", "5"
   end
 end

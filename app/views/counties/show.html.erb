@@ -1,19 +1,37 @@
 <h1><%= @county.name %></h1>
-<%- if @county.clubs.empty? %>
-  <p>There are no clubs here yet</p>
-<%- else %>
 <div class="row">
   <div class="col">
-    <p>Drill down through each section</p>
+    <%- if @county.clubs.empty? %>
+      <p>There are no clubs here yet</p>
+    <%- else %>
+      <h3>Clubs</h3>
+      <div class="list-group">
+        <%- @county.clubs.each do |club| %>
+          <%= link_to club_path(province: @county.province.slug, county: @county.slug, club: club.slug), class: "list-group-item list-group-item-action d-flex gap-3 py-3" do %>
+            <%= image_tag club.logo, size: "32x32", alt: "de logo" %>
+            <div>
+              <h6 class="mb-0"><%= club.name %></h6>
+              <p class="mb-0 opacity-75"><%= club.address %></p>
+            </div>
+          <%- end %>
+      <%- end %>
+      </div>
+    <%- end %>
   </div>
   <div class="col">
-    <div class="list-group">
-      <%- @county.clubs.each do |club| %>
-        <%= link_to club_path(province: @county.province.slug, county: @county.slug, club: club.slug), class: "list-group-item list-group-item-action" do %>
-          <span class="badge bg-primary"><%= @county.clubs.count %></span> <%= @county.name %>
+    <%- if @county.pitches.empty? %>
+      <p>There are no pitches here yet</p>
+    <%- else %>
+      <h3>Pitches</h3>
+      <div class="list-group">
+        <%- @county.pitches.each do |pitch| %>
+          <%= link_to pitch_path(province: @county.province.slug, county: @county.slug, pitch: pitch.slug), class: "list-group-item list-group-item-action" do %>
+            <div>
+              <h6 class="mb-0"><%= pitch.name %></h6>
+            </div>
         <%- end %>
       <%- end %>
-    </div>
+      </div>
+    <%- end %>
   </div>
 </div>
-<%- end %>
