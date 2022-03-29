@@ -12,11 +12,12 @@
 
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <div class="container-fluid">
+      <div class="container">
         <%= link_to root_path, class: "navbar-brand" do %>
           <%= inline_svg("logo") %>
-        WheresThatPitch?
-      <%- end %>
+          WheresThatPitch?
+        <%- end %>
+        <%= render partial: "admin/menu" if user_signed_in? %>
       </div>
     </nav>
     <div class="container">

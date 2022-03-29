@@ -1,0 +1,24 @@
+<%= link_to "Add a pitch", new_admin_pitch_path, class: "btn btn-primary" %>
+<% if @pitches.empty? %>
+  <p>There are no pitches yet</p>
+<% else %>
+  <table class="table">
+    <tr>
+      <td></td>
+      <td>ID</td>
+      <td>Name</td>
+      <td>County</td>
+    </tr>
+    <% @pitches.each do |pitch| %>
+      <tr>
+        <td>
+          <%= link_to icon("pencil"), edit_admin_pitch_path(pitch), class: "action" %> |
+          <%= link_to icon("trash"), admin_pitch_path(pitch), method: :delete, data: {confirm: "Are you sure you want to delete #{pitch.name}?"}, class: "action" %>
+        </td>
+        <td><%= pitch.id %></td>
+        <td><%= link_to pitch.name, pitch_path(province: pitch.county.province.slug, county: pitch.county.slug, pitch:pitch.slug) %></td>
+        <td><%= pitch.county.name %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

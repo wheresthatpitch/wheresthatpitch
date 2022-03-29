@@ -10,10 +10,6 @@ class Club < ApplicationRecord
     ""
   end
 
-  def address
-    "This will be the address"
-  end
-
   def slugify
     self.slug = name.parameterize
   end

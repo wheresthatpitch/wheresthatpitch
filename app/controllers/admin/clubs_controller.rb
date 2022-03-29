@@ -21,6 +21,6 @@ class Admin::ClubsController < ApplicationController
   private
 
   def club_params
-    params.require(:club).permit(:name, :county_id)
+    params.require(:club).permit(:name, :address, :county_id)
   end
 end

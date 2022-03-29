@@ -26,7 +26,9 @@
       <div class="list-group">
         <%- @county.pitches.each do |pitch| %>
           <%= link_to pitch_path(province: @county.province.slug, county: @county.slug, pitch: pitch.slug), class: "list-group-item list-group-item-action" do %>
-            <%= @pitch.name %>
+            <div>
+              <h6 class="mb-0"><%= pitch.name %></h6>
+            </div>
         <%- end %>
       <%- end %>
       </div>

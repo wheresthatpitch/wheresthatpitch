@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "clubs#index"
     resources :clubs
+    resources :pitches
   end
 
   root "provinces#index"
