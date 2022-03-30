@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :user do
-    
   end
 
   factory :province do
