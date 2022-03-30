@@ -4,11 +4,9 @@ class Club < ApplicationRecord
   belongs_to :county
   has_and_belongs_to_many :pitches
 
-  default_scope { order(:slug) }
+  has_one_attached :logo
 
-  def logo
-    ""
-  end
+  default_scope { order(:slug) }
 
   def slugify
     self.slug = name.parameterize
