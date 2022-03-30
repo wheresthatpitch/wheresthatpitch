@@ -46,3 +46,5 @@ County.create({name: "Clare", slug: "clare", province: munster})
 County.create({name: "Tipperary", slug: "tipperary", province: munster})
 County.create({name: "Waterford", slug: "waterford", province: munster})
 County.create({name: "Limerick", slug: "limerick", province: munster})
+
+User.create(email: "bugs@acme.fake", password: "totally_secure")
