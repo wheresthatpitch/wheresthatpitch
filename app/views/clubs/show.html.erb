@@ -1,1 +1,9 @@
-<h1><%= @club.name %></h1>
+<div class="map-container">
+  <div id="map" data-latitude="<%= @club.latitude %>" data-longitude="<%= @club.longitude %>"></div>
+  <h1>
+    <%= image_tag @club.logo.variant(resize_to_limit: [64, 64]), size: "64x64", alt: "#{@club.name}'s logo" %>
+    <%= @club.name %>
+  </h1>
+</div>
+
+<%= javascript_pack_tag "map" %>

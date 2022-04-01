@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 require("@popperjs/core")
+require("leaflet")
 
 import "bootstrap"
 
