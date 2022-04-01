@@ -18,6 +18,6 @@ class CountiesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_select "h1", county.name
-    assert_select "span", "5"
+    assert_select "h6", 5
   end
 end

@@ -42,6 +42,14 @@ FactoryBot.define do
   factory :club do
     name { Faker::Team.name }
     county
+
+    after(:build) do |club|
+      club.logo.attach(
+        io: File.open(Rails.root.join('test', 'fixtures', 'files', 'test-image.jpg')),
+        filename: 'test-image.jpg',
+        content_type: 'image/jpeg'
+      )
+    end
   end
 
   factory :pitch do
