@@ -45,9 +45,9 @@ FactoryBot.define do
 
     after(:build) do |club|
       club.logo.attach(
-        io: File.open(Rails.root.join('test', 'fixtures', 'files', 'test-image.jpg')),
-        filename: 'test-image.jpg',
-        content_type: 'image/jpeg'
+        io: File.open(Rails.root.join("test", "fixtures", "files", "test-image.jpg")),
+        filename: "test-image.jpg",
+        content_type: "image/jpeg"
       )
     end
   end
