@@ -18,9 +18,20 @@ class Admin::ClubsController < ApplicationController
     end
   end
 
+  def edit
+    @club = Club.find(params[:id])
+    render :new
+  end
+
+  def update
+    club = Club.find(params[:id])
+    club.update!(club_params)
+    redirect_to admin_clubs_url
+  end
+
   private
 
   def club_params
-    params.require(:club).permit(:name, :address, :county_id, :logo)
+    params.require(:club).permit(:name, :address, :county_id, :logo, :latitude, :longitude)
   end
 end

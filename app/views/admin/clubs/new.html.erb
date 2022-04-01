@@ -15,6 +15,14 @@
     <%= form.label :county, "County:", class: "form-label" %>
     <%= form.collection_select :county_id, County.order(:name), :id, :name, { prompt: true }, { class: "form-select" } %>
   </div>
+  <div class="col-md-6">
+    <%= form.label :latitude, "Latitude:", class: "form-label" %>
+    <%= form.text_field :latitude, class: "form-control" %>
+  </div>
+  <div class="col-md-6">
+    <%= form.label :longitude, "Longitude:", class: "form-label" %>
+    <%= form.text_field :longitude, class: "form-control" %>
+  </div>
   <div class="col-12">
     <%= form.button "Save", type: "submit", :class=> "btn btn-primary" %>
   </div>
