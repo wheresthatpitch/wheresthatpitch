@@ -3,22 +3,27 @@
   <p>There are no clubs yet</p>
 <% else %>
   <table class="table">
-    <tr>
-      <td></td>
-      <td>ID</td>
-      <td>Name</td>
-      <td>County</td>
-    </tr>
-    <% @clubs.each do |club| %>
+    <thead>
       <tr>
-        <td>
-          <%= link_to icon("pencil"), edit_admin_club_path(club), class: "action" %> |
-          <%= link_to icon("trash"), admin_club_path(club), method: :delete, data: {confirm: "Are you sure you want to delete #{club.name}?"}, class: "action" %>
-        </td>
-        <td><%= club.id %></td>
-        <td><%= link_to club.name, club_path(province: club.county.province.slug, county: club.county.slug, club:club.slug) %></td>
-        <td><%= club.county.name %>
+        <td></td>
+        <td>ID</td>
+        <td>Name</td>
+        <td>County</td>
       </tr>
-    <% end %>
+    </thead>
+    <tbody>
+      <% @clubs.each do |club| %>
+        <tr>
+          <td>
+            <%= link_to icon("pencil"), edit_admin_club_path(club), class: "action" %> |
+            <%= link_to icon("trash"), admin_club_path(club), method: :delete, data: {confirm: "Are you sure you want to delete #{club.name}?"}, class: "action" %>
+          </td>
+          <td><%= club.id %></td>
+          <td><%= link_to club.name, club_path(province: club.county.province.slug, county: club.county.slug, club:club.slug) %></td>
+          <td><%= club.county.name %>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 <% end %>
+<%= paginate @clubs %>
