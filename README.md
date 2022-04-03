@@ -1,24 +1,6 @@
-# README
+## Where's That Pitch?
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple web app to list pitches in Ireland, initially scoped to GAA pitches.
+Adding pitches is done by a logged in user, of which there's planned to be only one for the time being.
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
