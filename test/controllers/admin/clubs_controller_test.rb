@@ -50,4 +50,23 @@ class Admin::ClubsControllerTest < ActionDispatch::IntegrationTest
     get new_admin_club_url
     assert_response :success
   end
+
+  test "logged in users can create a new club" do
+    user = create(:user)
+    create(:county)
+
+    sign_in user
+    parameters = { club: {
+      name: Faker::Team.name,
+      address: Faker::Address,
+      county_id: 1,
+      latitude: 53.0,
+      longitude: 9
+    }}
+    post "/admin/clubs",
+      params: parameters
+
+    assert_redirected_to admin_clubs_url
+    assert 1, Club.count
+  end
 end
