@@ -58,7 +58,7 @@ class Admin::ClubsControllerTest < ActionDispatch::IntegrationTest
     sign_in user
     parameters = { club: {
       name: Faker::Team.name,
-      address: Faker::Address,
+      address: Faker::Address.full_address,
       county_id: 1,
       latitude: 53.0,
       longitude: 9
@@ -68,5 +68,24 @@ class Admin::ClubsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to admin_clubs_url
     assert 1, Club.count
+  end
+
+  test "logged in users can edit club details" do
+    user = create(:user)
+    club = create(:club)
+
+    sign_in user
+    get edit_admin_club_url club
+    assert_response :success
+
+    address = Faker::Address.full_address
+    patch "/admin/clubs/#{club.id}",
+      params: { club: {
+        address: address
+      }
+      }
+
+    club.reload
+    assert address, club.address
   end
 end
