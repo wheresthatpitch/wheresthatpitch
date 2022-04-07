@@ -37,6 +37,7 @@ group :development, :test do
   gem "standard"
   gem "factory_bot_rails"
   gem "faker"
+  gem "brakeman"
 end
 
 group :development do
