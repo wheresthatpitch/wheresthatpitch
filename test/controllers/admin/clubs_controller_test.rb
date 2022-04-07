@@ -56,7 +56,7 @@ class Admin::ClubsControllerTest < ActionDispatch::IntegrationTest
     create(:county)
 
     sign_in user
-    parameters = { club: {
+    parameters = {club: {
       name: Faker::Team.name,
       address: Faker::Address.full_address,
       county_id: 1,
@@ -80,10 +80,9 @@ class Admin::ClubsControllerTest < ActionDispatch::IntegrationTest
 
     address = Faker::Address.full_address
     patch "/admin/clubs/#{club.id}",
-      params: { club: {
+      params: {club: {
         address: address
-      }
-      }
+      }}
 
     club.reload
     assert address, club.address
