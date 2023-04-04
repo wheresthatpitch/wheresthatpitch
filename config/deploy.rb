@@ -41,7 +41,7 @@ append :linked_dirs, ".bundle"
 # set :ssh_options, verify_host_key: :secure
 
 set :rbenv_type, :user
-# set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w[rake gem bundle ruby rails]
 set :rbenv_roles, :production
 
@@ -50,7 +50,7 @@ set :puma_service_unit_name, "puma_wheresthatpitch_ie_production"
 set :puma_systemctl_user, :system
 
 append :linked_files, "config/master.key"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "public/uploads"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/uploads"
 
 namespace :deploy do
   namespace :check do
