@@ -42,3 +42,12 @@ County.create(
     {name: "Wicklow", ainm: "Cill Mhaintáin", province: leinster},
   ]
 )
+
+Sport.create(
+  [
+    {name: "Gaelic Football", ainm: "Peil Gaelach"},
+    {name: "Hurling", ainm: "Iománaíocht"},
+    {name: "Ladies Gaelic Football", ainm: "Peil Gaelach na mBan"},
+    {name: "Camogie", ainm: "Camogaíocht"},
+  ]
+)
